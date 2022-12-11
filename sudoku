@@ -34,8 +34,39 @@ def isempty(board):
                 return (i, j)
     return False
 
+def solve(board):
+
+    cell = isempty(board)
+    if not cell:
+        return True
     
+    row = cell[0]
+    col = cell[1]
+    
+    for i in range(1, 10):
+        if valid(board, i, cell):
+            board[row][col] = i
+            if solve(board):
+                return True
+            board[row][col] = 0
 
+    return False
 
-        
+def valid(board, num, cell):
+    for i in range(len(board)):
+        if (board[i][cell[1]] == num and i != cell[0]) or (board[cell[0]][i] == num and i != cell[1]):
+            return False
+    
+    box_x = cell[1]//3
+    box_y = cell[0]//3
+    for i in range(3):
+        for j in range(3):
+            if board[i + (box_y * 3)][j + (box_x * 3)] == num and (i + (box_y*3) != cell[0] and j + (box_x*3) != cell[1]):
+                return False
+
+    return True
+
+printboard(board)
+solve(board)
+print("----------------------------")
 printboard(board)

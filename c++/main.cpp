@@ -16,7 +16,7 @@ struct player { // player struct
   int attrSho;
   int attrDef;
   int attrPla;
-  int attrReb;
+  int attrReb;	
 };
 
 struct team{ // team struct

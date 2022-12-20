@@ -53,7 +53,6 @@ def isempty(board):
 #
 # param 1: {list} board The sudoku board.
 # return: {boolean} the solved state of the board
-
 def solve(board):
     global iterations
     iterations += 1

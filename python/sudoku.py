@@ -1,3 +1,7 @@
+# Stephen Shin
+# Sudoku Solving program
+
+
 board=[
     [8,0,0,0,0,0,0,0,0],
     [0,0,3,6,0,0,0,0,0],
@@ -11,6 +15,10 @@ board=[
 
 iterations = 0
 
+# printboard prints sudoku board to console
+#
+# param 1: {list} board The sudoku board.
+# return: N/A
 def printboard(board):
 
     for i in board:
@@ -29,12 +37,22 @@ def printboard(board):
         print("")
         count += 1
 
+        
+# isempty returns cell position if number in cell is 0, else returns false
+#
+# param 1: {list} board The sudoku board.
+# return: {tuple/boolean} tuple if empty cell is found, false if no empty cells are found
 def isempty(board):
     for i in range(len(board)):
         for j in range(len(board)):
             if board[i][j] == 0:
                 return (i, j)
     return False
+
+# solve returns true if board is solved, false if unsolved.
+#
+# param 1: {list} board The sudoku board.
+# return: {boolean} the solved state of the board
 
 def solve(board):
     global iterations
@@ -56,6 +74,12 @@ def solve(board):
 
     return False
 
+# valid returns true or false if number in given cell is valid according to sudoku rules.
+# 
+# param 1: {list} board The sudoku board.
+# param 2: {int} num The number being tested.
+# param 3: {int} cell The cell the number is being tested in.
+# return: {boolean} validity of number in cell
 def valid(board, num, cell):
     for i in range(len(board)):
         if (board[i][cell[1]] == num and i != cell[0]) or (board[cell[0]][i] == num and i != cell[1]):
